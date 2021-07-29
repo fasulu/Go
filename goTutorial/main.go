@@ -6,39 +6,48 @@ import (
 
 func main() {
 
-	// for loop
+	// Booleans, if Conditions, continue and break
 
-	for i := 0; i < 5; i++ {
-		fmt.Println("i value is", i)
+	males := 25
+	females := 15
+
+	fmt.Println(males <= females) //false
+	fmt.Println(females >= males) //false
+	fmt.Println(males > females)  //true
+	fmt.Println(females != males) //true
+
+	if males > 25 {
+
+		fmt.Println("males are not more than 25")
+
+	} else if females > males {
+
+		fmt.Println("females are less than males")
+
+	} else {
+
+		fmt.Println("there are diffence in female and male counts")
+
 	}
 
-	/**********/
-	
-	val := 1
-	val1 := 5
-
-	for val < 10 {
-		fmt.Println(val, " * ", val1, " = ", (int(val) * int(val1)))
-		val++
-	}
-
-	/************/
+	// run the following code and learn how continue and break works
 
 	myArray := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i"}
 
-	for i := 0; i < len(myArray); i++ {
-		fmt.Println(i, "index array value is", myArray[i])
-	}
-
-	/***********/
-
 	for index, value := range myArray {
-		fmt.Printf("the value of index %v is %v\n", index, value)
+
+		if index == 1 {
+
+			fmt.Println("continuing at position", index)
+			continue
+		}
+
+		if index > 2 {
+			fmt.Println("breaking at position", index)
+			break
+		}
+
+		fmt.Printf("the value at position %v is %v \n", index, value)
 	}
 
-	/*********/
-
-	for _, value := range myArray {
-		fmt.Printf("the value is %v\n", value)
-	}
 }
