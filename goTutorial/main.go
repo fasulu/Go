@@ -10,48 +10,47 @@ func updateName(x string) string {
 
 	x = "pa"
 
-	fmt.Println("x is", x)			// x is pa
+	fmt.Println("x is changed to pa: ", x)			// x is pa
 
 	return x
 }
 
-func updateMenu(y map[string]float64) {
+func updateNameUsingPointer(y *string) {
 
-	y["coffee"] = 5.99
+	fmt.Println("y in func updateNameUsingPointer is ", *y)		// result is y in func updateNameUsingPointer is  ka
 
-	fmt.Println("y before update",y)	// y before update map[coffee:5.99 tea:0.99 water:0.49]
+	*y = "ma"
 
-	y["coffee"] = 4.99
+	fmt.Println("y in func updateNameUsingPointer after updated is : ", *y)		// result is y in func updateNameUsingPointer after updated is : ma
 
-	fmt.Println("y after update",y)		// y after update map[coffee:4.99 tea:0.99 water:0.49]
+
 }
 
 func main() {
-
-	// Pass By Value ! IMPORTANT *** how data is handled in group a and group b types. THERE IS DIFFERENC IN GROUP A AND B
-
-	// Learn this in https://www.youtube.com/watch?v=LBLN4Wu5U4w
-
-	// Group A types = strings, ints, booleans, floats, arrays and struct
+	
+	// POINTER - How pointers work in Go --- https://www.youtube.com/watch?v=4B2rwYvuiBo
+	
+	// Pointer is used to point the data stored memory location
 
 	name := "ka"
 
-	fmt.Println("name is", name)	// name is ka
+	fmt.Println("memory address of name is", &name)	// &name gives memory address, &name is called pointer
+	
+	mem := &name
+	
+	fmt.Println("mem is stroed the memory addres", mem)	// printers memory address stored in mem, ie pointer 
 
-	var newName = updateName(name) 
+	fmt.Println("*mem shows the value stored in its memory address", *mem)		// *mem prints the value stroed in that memory address
 
-	fmt.Println("name is", name)	// name is ka
-	fmt.Println("newName is", newName)	// newName is pa
+	updateName(name) 
 
-	// Group B types = slice, maps and functions
+	fmt.Println()
 
-	menu := map[string]float64{
-		"water": 0.49,
-		"tea":   0.99,
-	}
+	// how to update value using pointer
 
-	updateMenu((menu))
-
-	fmt.Println(menu)	// map[coffee:4.99 tea:0.99 water:0.49]
-
+	fmt.Println("name before update :", name)	// result is name before update : ka
+	
+	updateNameUsingPointer(mem)		// passing memory location to a function updateNameUsingPointer
+	
+	fmt.Println("name after update :", name)	// result is name after update : ma
 }
