@@ -4,43 +4,54 @@ import (
 	"fmt"
 )
 
+func updateName(x string) string {
+
+	fmt.Println("x is", x)			//	x is ka
+
+	x = "pa"
+
+	fmt.Println("x is", x)			// x is pa
+
+	return x
+}
+
+func updateMenu(y map[string]float64) {
+
+	y["coffee"] = 5.99
+
+	fmt.Println("y before update",y)	// y before update map[coffee:5.99 tea:0.99 water:0.49]
+
+	y["coffee"] = 4.99
+
+	fmt.Println("y after update",y)		// y after update map[coffee:4.99 tea:0.99 water:0.49]
+}
+
 func main() {
 
-	// Maps - used to store values in array with keys and values
+	// Pass By Value ! IMPORTANT *** how data is handled in group a and group b types. THERE IS DIFFERENC IN GROUP A AND B
 
-	menu := map[string]float64 {
-		
-		"soup" : 1.99,
-		"salad" : 0.99,
-		"water" : 0.49,
-		"coffee" : 0.99,
+	// Learn this in https://www.youtube.com/watch?v=LBLN4Wu5U4w
+
+	// Group A types = strings, ints, booleans, floats, arrays and struct
+
+	name := "ka"
+
+	fmt.Println("name is", name)	// name is ka
+
+	var newName = updateName(name) 
+
+	fmt.Println("name is", name)	// name is ka
+	fmt.Println("newName is", newName)	// newName is pa
+
+	// Group B types = slice, maps and functions
+
+	menu := map[string]float64{
+		"water": 0.49,
+		"tea":   0.99,
 	}
 
-	fmt.Println(menu["soup"])	// gives 1.99
-	fmt.Println(menu)			// gives map[coffee:0.99 salad:0.99 soup:1.99 water:0.49]
+	updateMenu((menu))
 
-	//
+	fmt.Println(menu)	// map[coffee:4.99 tea:0.99 water:0.49]
 
-	phonelist := map[int]string {
-		54664654: "ray",
-		98765754: "sha",
-		23541845: "bee",
-	}
-
-	fmt.Println(phonelist[54664654])
-	fmt.Println(phonelist)
-
-	// looping maps
-
-	for k,v := range phonelist {
-		fmt.Println(k, "-", v)			// result will be 54664654 - ray
-														//98765754 - sha
-														//23541845 - bee
-	}
-
-	// updating the map
-
-	phonelist[54664654] = "rayh"	// change value of 54664654 to rayh
-
-	fmt.Println(phonelist)		//result is map[23541845:bee 54664654:rayh 98765754:sha]
 }
