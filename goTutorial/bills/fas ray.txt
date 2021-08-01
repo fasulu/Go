@@ -1,0 +1,5 @@
+Bill breakdown: 
+water:          ...$0.99 
+cake:           ...$5.99 
+tip:            ...$100.00 
+total:          ...$106.98

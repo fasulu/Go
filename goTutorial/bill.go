@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"strings"
 )
 
 type bill struct {
@@ -51,4 +53,20 @@ func (b *bill) updateTip(tip float64) {
 // add an item to the bill
 func (b *bill) addItem(name string, price float64) {
 	b.items[name] = price
+}
+
+// save bill
+
+func (b *bill) save() {
+	data := []byte(b.format())
+
+	// fname := strings.Replace( b.name," ","-", -1)
+
+	err := ioutil.WriteFile("bills/"+ strings.Replace( b.name," ","-", -1) + ".txt", data, 0644)
+
+	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println("Bill saved successfully")
+	}
 }

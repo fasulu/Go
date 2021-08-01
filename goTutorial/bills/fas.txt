@@ -1,0 +1,4 @@
+Bill breakdown: 
+water:          ...$1.99 
+tip:            ...$5.99 
+total:          ...$7.98

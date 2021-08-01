@@ -1,0 +1,4 @@
+Bill breakdown: 
+cake:           ...$99.99 
+tip:            ...$100.00 
+total:          ...$199.99
